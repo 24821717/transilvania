@@ -1,0 +1,11 @@
+# Originales MASTER (pesados, se conservan fuera del repo)
+material/
+*.jpeg
+*:Zone.Identifier
+bloc.txt
+# Temporales
+*.tmp.mp4
+*.log
+.DS_Store
+node_modules/
+.netlify/

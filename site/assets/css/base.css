@@ -1,0 +1,231 @@
+/* ==========================================================
+   TRANSILVANIA · BASE (tokens, tipografía, botones)
+   Compartido entre HOME y /elpacto. Cada página tiene su propia hoja.
+   ========================================================== */
+
+:root {
+  /* Paleta oficial */
+  --black: #10090b;
+  --black-2: #170d10;
+  --black-3: #1f1215;
+  --crimson: #951b2a;
+  --crimson-hi: #b8243a;
+  --crimson-deep: #5e0f19;
+  --ivory: #f4efea;
+  --ivory-dim: rgba(244, 239, 234, 0.72);
+  --ivory-mute: rgba(244, 239, 234, 0.5);
+  --silver: #a9a39c;
+  --gold: #c2a26b;
+  --gold-dim: rgba(194, 162, 107, 0.45);
+  --line: rgba(194, 162, 107, 0.22);
+
+  /* Tipografía */
+  --f-display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --f-serif: "Cormorant Garamond", Georgia, serif;
+  --f-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Escala fluida */
+  --fs-xs: 0.6875rem;
+  --fs-sm: 0.8125rem;
+  --fs-body: clamp(0.9375rem, 0.9rem + 0.15vw, 1.0625rem);
+  --fs-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --fs-h2: clamp(2rem, 1.35rem + 2.6vw, 3.5rem);
+  --fs-h1: clamp(2.5rem, 1.6rem + 3.8vw, 5rem);
+
+  /* Espaciado */
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-y: clamp(5rem, 3rem + 8vw, 10rem);
+  --maxw: 1240px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --nav-h: 76px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h);
+  background: var(--black);
+}
+
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--ivory);
+  font-family: var(--f-sans);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, video, svg { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+h1, h2, h3, p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+
+::selection { background: var(--crimson); color: var(--ivory); }
+
+.container {
+  width: 100%;
+  max-width: calc(var(--maxw) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem; left: 0.75rem;
+  z-index: 1000;
+  padding: 0.75rem 1.1rem;
+  background: var(--ivory);
+  color: var(--black);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 0.2s var(--ease);
+}
+.skip-link:focus { transform: none; }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/* ── Tipografía editorial ─────────────────────────────── */
+.eyebrow {
+  font-family: var(--f-display);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9em;
+}
+.eyebrow::before {
+  content: "";
+  width: 2.2em;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.h1, .h2 {
+  font-family: var(--f-display);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  text-wrap: balance;
+}
+.h1 { font-size: var(--fs-h1); }
+.h2 { font-size: var(--fs-h2); }
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.7;
+  color: var(--ivory-dim);
+  max-width: 34em;
+  text-wrap: pretty;
+}
+
+/* ── Iconos ──────────────────────────────────────────── */
+.icon { width: 1.25em; height: 1.25em; flex: none; fill: currentColor; }
+.icon--sm { width: 0.95em; height: 0.95em; }
+
+/* ── Botones ─────────────────────────────────────────── */
+.btn {
+  --pad-y: 1rem;
+  --pad-x: 1.9rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75em;
+  min-height: 48px;
+  padding: var(--pad-y) var(--pad-x);
+  border: 1px solid transparent;
+  border-radius: 2px;
+  font-family: var(--f-display);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+  background: none;
+  transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease),
+              color 0.35s var(--ease), box-shadow 0.35s var(--ease), transform 0.2s var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.btn__arrow { display: inline-block; transition: transform 0.35s var(--ease); }
+.btn:hover .btn__arrow { transform: translateX(4px); }
+.btn:active { transform: translateY(1px); }
+
+.btn--primary {
+  background: linear-gradient(180deg, var(--crimson-hi), var(--crimson) 55%, #7d1522);
+  border-color: rgba(255, 190, 170, 0.28);
+  color: var(--ivory);
+  box-shadow: 0 0 0 1px rgba(16, 9, 11, 0.6), 0 10px 30px -10px rgba(149, 27, 42, 0.8),
+              inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+.btn--primary:hover {
+  background: linear-gradient(180deg, #cc2a42, var(--crimson-hi) 55%, var(--crimson));
+  box-shadow: 0 0 0 1px rgba(16, 9, 11, 0.6), 0 14px 40px -8px rgba(184, 36, 58, 0.9),
+              inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+.btn--primary:focus-visible { outline-color: var(--ivory); }
+
+.btn--ghost {
+  border-color: var(--gold-dim);
+  color: var(--ivory);
+  background: rgba(16, 9, 11, 0.35);
+  backdrop-filter: blur(4px);
+}
+.btn--ghost:hover {
+  border-color: var(--gold);
+  background: rgba(194, 162, 107, 0.1);
+}
+
+.btn--sm { --pad-y: 0.75rem; --pad-x: 1.25rem; min-height: 42px; font-size: var(--fs-xs); }
+.btn--lg { --pad-y: 1.2rem; --pad-x: 2.4rem; min-height: 56px; }
+@media (max-width: 480px) {
+  .btn { letter-spacing: 0.14em; }
+  .btn--lg { --pad-x: 1.25rem; }
+}
+
+/* ── Movimiento ──────────────────────────────────────── */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1s var(--ease), transform 1s var(--ease);
+  transition-delay: var(--d, 0s);
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js .reveal { opacity: 1; transform: none; }
+}

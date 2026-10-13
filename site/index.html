@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <script>document.documentElement.classList.add("js")</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- HOME TEMPORAL: se reemplaza por la HOME corporativa definitiva. -->
+  <title>Transilvania · A Halloween Night</title>
+  <meta name="description" content="Transilvania · A Halloween Night. La noche tiene un nuevo reino. Próximo evento: El Pacto de la Noche × Festival H3B, 30 de octubre de 2026 en Puebla.">
+  <meta name="theme-color" content="#10090B">
+  <link rel="canonical" href="https://transilvaniahalloween.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Transilvania · A Halloween Night">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:url" content="https://transilvaniahalloween.com/">
+  <meta property="og:title" content="Transilvania · A Halloween Night">
+  <meta property="og:description" content="La noche tiene un nuevo reino. Próximo evento: El Pacto de la Noche × Festival H3B · 30 Octubre 2026 · Puebla.">
+  <meta property="og:image" content="https://transilvaniahalloween.com/assets/img/og-elpacto.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="preload" as="image" href="/assets/img/poster-desktop.webp" media="(min-aspect-ratio: 1/1)">
+  <link rel="preload" as="image" href="/assets/img/poster-mobile.webp" media="(max-aspect-ratio: 1/1)">
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <style>
+    .splash {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      isolation: isolate;
+      overflow: hidden;
+    }
+    .splash__media { position: absolute; inset: 0; z-index: -2; background: var(--black); }
+    .splash__media img, .splash__media video {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    }
+    .splash__media video { opacity: 0; transition: opacity 1.4s var(--ease); }
+    .splash__media video.is-playing { opacity: 1; }
+    .splash::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background:
+        radial-gradient(ellipse at 50% 55%, rgba(16, 9, 11, 0.15) 0%, rgba(16, 9, 11, 0.6) 70%),
+        linear-gradient(180deg, rgba(16, 9, 11, 0.55) 0%, transparent 25%, rgba(16, 9, 11, 0.35) 55%, rgba(16, 9, 11, 0.94) 100%);
+    }
+    .splash__top { display: flex; justify-content: center; padding: clamp(1.5rem, 4vh, 2.5rem) var(--gutter) 0; }
+    .splash__top img { width: clamp(170px, 18vw, 260px); filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.7)); }
+    .splash__body {
+      align-self: end;
+      display: grid; justify-items: center; text-align: center; gap: 1.4rem;
+      padding: 0 var(--gutter) clamp(2rem, 6vh, 4rem);
+    }
+    .splash__title {
+      font-family: var(--f-display); font-weight: 500;
+      font-size: clamp(1.9rem, 1.2rem + 3vw, 4rem);
+      line-height: 1.08; letter-spacing: 0.03em; text-transform: uppercase;
+      text-wrap: balance; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+    }
+    .splash__sub { color: var(--ivory-dim); font-size: var(--fs-lead); }
+    .splash__body .btn { margin-top: 0.6rem; }
+    .splash__event {
+      font-family: var(--f-display); font-size: var(--fs-xs);
+      letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold);
+    }
+    .splash__foot {
+      padding: 1.2rem var(--gutter) calc(1.2rem + env(safe-area-inset-bottom));
+      text-align: center; font-size: var(--fs-xs); letter-spacing: 0.12em; color: var(--ivory-mute);
+    }
+    @media (max-width: 600px) {
+      .splash__body .btn { width: 100%; max-width: 360px; }
+      .splash__event { line-height: 1.9; }
+    }
+  </style>
+</head>
+<body>
+  <main class="splash">
+    <div class="splash__media" aria-hidden="true">
+      <picture>
+        <source media="(max-aspect-ratio: 1/1)" srcset="/assets/img/poster-mobile.webp">
+        <img src="/assets/img/poster-desktop.webp" alt="" fetchpriority="high">
+      </picture>
+      <video muted loop playsinline preload="none" data-hero-video
+             data-src-desktop="/assets/video/splash-desktop.mp4"
+             data-src-mobile="/assets/video/splash-mobile.mp4"></video>
+    </div>
+
+    <header class="splash__top">
+      <h1><img src="/assets/img/logo-transilvania.webp" alt="Transilvania · A Halloween Night" width="600" height="200"></h1>
+    </header>
+
+    <div class="splash__body">
+      <p class="splash__title reveal">La noche tiene<br>un nuevo reino.</p>
+      <p class="splash__sub reveal">Una experiencia que trasciende lo ordinario.</p>
+      <a class="btn btn--primary btn--lg" href="/elpacto" data-landing="home_splash">
+        Descubre el próximo evento <span class="btn__arrow" aria-hidden="true">↗</span>
+      </a>
+      <p class="splash__event reveal">El Pacto de la Noche × Festival H3B · 30 Octubre 2026 · Puebla</p>
+    </div>
+
+    <footer class="splash__foot">© 2026 Transilvania · A Halloween Night</footer>
+  </main>
+
+  <script src="/assets/js/config.js"></script>
+  <script>
+    (function () {
+      document.querySelectorAll("[data-landing]").forEach(function (a) {
+        a.addEventListener("click", function () {
+          window.trackEvent("event_landing_click", { location: a.dataset.landing, destination: "/elpacto" });
+        });
+      });
+
+      var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var saveData = navigator.connection && navigator.connection.saveData;
+      var v = document.querySelector("[data-hero-video]");
+      function load() {
+        if (reduce || saveData) return;
+        v.src = matchMedia("(max-aspect-ratio: 1/1)").matches ? v.dataset.srcMobile : v.dataset.srcDesktop;
+        v.addEventListener("playing", function () { v.classList.add("is-playing"); });
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+      }
+      if (document.readyState === "complete") load(); else addEventListener("load", load);
+
+      var els = document.querySelectorAll(".reveal");
+      els.forEach(function (el, i) {
+        el.style.setProperty("--d", (0.2 + i * 0.12) + "s");
+        requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add("is-in"); }); });
+      });
+    })();
+  </script>
+</body>
+</html>

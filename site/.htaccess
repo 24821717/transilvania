@@ -1,0 +1,14 @@
+# Hosting Apache (Hostinger / cPanel)
+Options -Indexes
+DirectoryIndex index.html
+RewriteEngine On
+RewriteRule ^ELPACTO/?$ /elpacto [R=301,L,NC]
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
+AddType image/svg+xml .svg
+AddType video/mp4 .mp4
