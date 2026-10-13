@@ -100,14 +100,17 @@
       <div class="hero__shade" aria-hidden="true"></div>
 
       <div class="hero__content container">
-        <p class="eyebrow reveal">Transilvania presenta</p>
         <h1 class="hero__title reveal" id="hero-title">
           <img src="/assets/img/logo-pacto.webp" alt="El Pacto de la Noche" width="1100" height="620">
         </h1>
-        <p class="hero__collab reveal">
-          <span class="hero__x" aria-hidden="true">×</span>
-          <img src="/assets/img/logo-h3b.webp" alt="Festival H3B" width="300" height="200">
-        </p>
+        <div class="presenters reveal">
+          <p class="presenters__label">Presentan</p>
+          <p class="presenters__logos">
+            <img src="/assets/img/sig-transilvania.webp" alt="Transilvania · A Halloween Night" width="408" height="160">
+            <span class="presenters__rule" aria-hidden="true"></span>
+            <img src="/assets/img/sig-h3b.webp" alt="Festival H3B" width="248" height="160">
+          </p>
+        </div>
 
         <p class="hero__tagline reveal">Dos leyendas. Una sola noche.</p>
 
@@ -211,9 +214,12 @@
     <section class="section venue" id="sede" aria-labelledby="venue-title">
       <div class="container venue__grid">
         <div class="venue__copy">
-          <p class="eyebrow reveal">La sede</p>
-          <h2 class="h2 reveal" id="venue-title">El reino existe.</h2>
-          <p class="venue__name reveal">Hacienda Talavera<br>de los Ángeles</p>
+          <div class="venue__intro">
+            <p class="eyebrow reveal">La sede</p>
+            <h2 class="h2 reveal" id="venue-title">El reino existe.</h2>
+            <p class="venue__name reveal">Hacienda Talavera<br>de los Ángeles</p>
+          </div>
+          <div class="venue__info">
           <p class="lead reveal">Un escenario extraordinario para una noche fuera de lo ordinario.</p>
           <ul class="facts reveal" aria-label="Fecha y lugar">
             <li>
@@ -228,10 +234,11 @@
           <a class="btn btn--ghost reveal" href="#" data-maps target="_blank" rel="noopener">
             Cómo llegar <span class="btn__arrow" aria-hidden="true">→</span>
           </a>
+          </div>
         </div>
 
         <ul class="gallery" aria-label="Galería de la sede">
-          <li class="gallery__item gallery__item--main reveal">
+          <li class="gallery__item reveal">
             <img src="/assets/img/sede1.webp" alt="Vista aérea nocturna de Hacienda Talavera de los Ángeles bajo una luna roja" loading="lazy" decoding="async" width="900" height="1125">
           </li>
           <li class="gallery__item reveal">

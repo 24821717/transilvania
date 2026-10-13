@@ -143,22 +143,51 @@
 .hero__content .eyebrow { margin-bottom: 1.25rem; }
 .hero__title { margin: 0 0 0 -2%; }
 .hero__title img {
-  width: clamp(280px, 38vw, 560px);
+  width: clamp(260px, min(38vw, 64vh), 560px);
   filter: drop-shadow(0 10px 40px rgba(149, 27, 42, 0.45));
 }
-.hero__collab {
+/* Firma de co-presentación: centrada bajo el logo de El Pacto */
+.presenters {
+  width: clamp(260px, min(38vw, 64vh), 560px);
+  display: grid;
+  justify-items: center;
+  gap: 0.85rem;
+  margin: 0.2rem 0 2rem;
+}
+.presenters__label {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
-  margin: 0.4rem 0 1.8rem;
-}
-.hero__x {
-  font-family: var(--f-serif);
-  font-size: 2rem;
-  line-height: 1;
+  gap: 1rem;
+  font-family: var(--f-display);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
   color: var(--gold);
+  padding-left: 0.42em; /* compensa el tracking para centrar ópticamente */
 }
-.hero__collab img { width: clamp(84px, 8vw, 116px); }
+.presenters__label::before, .presenters__label::after {
+  content: "";
+  width: clamp(2rem, 5vw, 4rem);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim));
+}
+.presenters__label::after { background: linear-gradient(270deg, transparent, var(--gold-dim)); }
+.presenters__logos {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.6rem);
+}
+.presenters__logos img {
+  height: clamp(40px, min(4.4vw, 7vh), 62px);
+  width: auto;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.75));
+}
+.presenters__rule {
+  width: 1px;
+  height: clamp(34px, 3.4vw, 48px);
+  background: linear-gradient(180deg, transparent, var(--gold), transparent);
+}
 .hero__tagline {
   font-family: var(--f-display);
   font-size: clamp(0.95rem, 0.85rem + 0.4vw, 1.2rem);
@@ -210,6 +239,23 @@
   100% { transform: scaleY(1) translateY(12px); opacity: 0; }
 }
 
+/* Pantallas bajas (laptops 720–820 px): el CTA debe verse sin hacer scroll */
+@media (min-width: 768px) and (max-height: 820px) {
+  .hero { padding: calc(var(--nav-h) + 1rem) 0 3rem; }
+  .presenters { gap: 0.6rem; margin-bottom: 1.3rem; }
+  .hero__tagline { margin-bottom: 1.1rem; }
+  .hero .facts { gap: 0.6rem; margin-bottom: 1.5rem; }
+  .hero__actions { gap: 0.75rem; }
+  .hero__scroll { display: none; }
+}
+
+@media (min-width: 768px) and (max-height: 660px) {
+  .hero { padding-top: calc(var(--nav-h) + 0.25rem); padding-bottom: 2rem; }
+  .hero__title img, .presenters { width: clamp(240px, min(38vw, 58vh), 560px); }
+  .hero__tagline { margin-bottom: 0.8rem; }
+  .hero .facts { margin-bottom: 1.2rem; }
+}
+
 @media (max-width: 767px) {
   .hero { align-items: flex-end; padding-bottom: 4.5rem; }
   .hero__poster, .hero__video { object-position: 50% 30%; }
@@ -221,7 +267,7 @@
   .hero__content .eyebrow::before { display: none; }
   .hero__title { margin: 0; }
   .hero__title img { width: min(86vw, 400px); }
-  .hero__collab { justify-content: center; margin-bottom: 1.4rem; }
+  .presenters { width: min(86vw, 400px); margin-bottom: 1.5rem; }
   .hero__tagline { letter-spacing: 0.14em; }
   .hero .facts { justify-items: center; text-align: center; letter-spacing: 0.08em; }
   .hero .facts li { flex-direction: column; align-items: center; gap: 0.35rem; }
@@ -423,13 +469,14 @@
     radial-gradient(ellipse at 15% 30%, rgba(149, 27, 42, 0.14), transparent 55%),
     var(--black);
 }
-.venue__grid {
+.venue__grid { display: grid; gap: clamp(3rem, 6vw, 4.5rem); }
+.venue__copy {
   display: grid;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-  gap: clamp(2.5rem, 6vw, 5.5rem);
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: end;
 }
-.venue__copy { display: grid; justify-items: start; gap: 1.4rem; }
+.venue__intro, .venue__info { display: grid; justify-items: start; gap: 1.4rem; }
 .venue__name {
   font-family: var(--f-display);
   font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
@@ -438,40 +485,33 @@
   text-transform: uppercase;
   color: var(--gold);
 }
-.venue__copy .facts { margin: 0.4rem 0 0.6rem; }
+.venue__info .facts { margin: 0; }
+.venue__info .lead { max-width: 28em; }
 
+/* Las fotos son 4:5: la celda tiene la misma proporción, así se ven completas. */
 .gallery {
   display: grid;
-  grid-template-columns: 1.35fr 1fr 1fr;
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  aspect-ratio: 16 / 10.5;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(10px, 1.2vw, 16px);
 }
-.gallery__item { position: relative; overflow: hidden; background: var(--black-2); box-shadow: 0 0 0 1px var(--line); }
-.gallery__item--main { grid-row: span 2; }
-.gallery__item:nth-child(2) { grid-column: span 2; }
+.gallery__item {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--black-2);
+  box-shadow: 0 0 0 1px var(--line), 0 30px 60px -30px rgba(0, 0, 0, 0.9);
+}
 .gallery__item img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 1.6s var(--ease), filter 0.8s var(--ease);
-  filter: brightness(0.9);
+  transition: filter 0.8s var(--ease);
+  filter: brightness(0.94);
 }
-.gallery__item:hover img { transform: scale(1.05); filter: brightness(1.02); }
-.gallery__item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  box-shadow: inset 0 0 60px rgba(16, 9, 11, 0.55);
-  pointer-events: none;
-}
+.gallery__item:hover img { filter: brightness(1.04); }
 
 @media (max-width: 900px) {
-  .venue__grid { grid-template-columns: 1fr; }
-  .gallery { aspect-ratio: auto; grid-template-columns: 1fr 1fr; grid-template-rows: none; }
-  .gallery__item { aspect-ratio: 4 / 5; }
-  .gallery__item--main { grid-row: auto; grid-column: span 2; aspect-ratio: 4 / 3.4; }
-  .gallery__item:nth-child(2) { grid-column: auto; }
-  .gallery__item:nth-child(4) { grid-column: span 2; aspect-ratio: 16 / 9; }
+  .venue__copy { grid-template-columns: 1fr; gap: 1.4rem; align-items: start; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* ── AFTERMOVIE ──────────────────────────────────────── */

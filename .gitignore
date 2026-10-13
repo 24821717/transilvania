@@ -9,3 +9,6 @@ bloc.txt
 .DS_Store
 node_modules/
 .netlify/
+
+# Notas internas (contienen datos sensibles)
+recomendaciones/
