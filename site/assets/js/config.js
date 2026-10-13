@@ -17,9 +17,10 @@ window.TRANSILVANIA_CONFIG = {
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Hacienda+Talavera+de+los+%C3%81ngeles+Puebla",
 
-  // Redes oficiales (PENDIENTES)
+  // Redes oficiales (vacías = no se muestran)
   social: {
-    instagram: "",
+    instagram: "https://www.instagram.com/transilvania.halloweenfest/",
+    facebook: "https://www.facebook.com/Transilvania.Halloween",
     tiktok: "",
     youtube: "",
     spotify: "",

@@ -76,6 +76,10 @@
       padding: 1.2rem var(--gutter) calc(1.2rem + env(safe-area-inset-bottom));
       text-align: center; font-size: var(--fs-xs); letter-spacing: 0.12em; color: var(--ivory-mute);
     }
+    .splash__social { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+    .splash__social a { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: var(--ivory-dim); transition: color 0.3s, background-color 0.3s; }
+    .splash__social a:hover { color: var(--gold); background: rgba(244, 239, 234, 0.06); }
+    .splash__social svg { width: 20px; height: 20px; }
     @media (max-width: 600px) {
       .splash__body .btn { width: 100%; max-width: 360px; }
       .splash__event { line-height: 1.9; }
@@ -107,7 +111,13 @@
       <p class="splash__event reveal">El Pacto de la Noche × Festival H3B · 30 Octubre 2026 · Puebla</p>
     </div>
 
-    <footer class="splash__foot">© 2026 Transilvania · A Halloween Night</footer>
+    <footer class="splash__foot">
+      <ul class="splash__social" aria-label="Redes sociales">
+        <li><a href="https://www.instagram.com/transilvania.halloweenfest/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg></a></li>
+        <li><a href="https://www.facebook.com/Transilvania.Halloween" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21.5v-8h2.7l.4-3.2h-3.1V8.3c0-.9.3-1.5 1.6-1.5h1.7V4a22 22 0 0 0-2.5-.1c-2.4 0-4.1 1.5-4.1 4.2v2.2H7.5v3.2h2.7v8z"/></svg></a></li>
+      </ul>
+      © 2026 Transilvania · A Halloween Night
+    </footer>
   </main>
 
   <script src="/assets/js/config.js"></script>
