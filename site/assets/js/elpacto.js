@@ -25,6 +25,11 @@
     a.addEventListener("click", function () { track("maps_click"); });
   });
 
+  document.querySelectorAll("[data-whatsapp]").forEach(function (a) {
+    if (CFG.whatsappUrl) a.href = CFG.whatsappUrl;
+    a.addEventListener("click", function () { track("whatsapp_click"); });
+  });
+
   Object.keys(CFG.social || {}).forEach(function (k) {
     var url = CFG.social[k];
     var li = document.querySelector('[data-social="' + k + '"]');
@@ -159,6 +164,27 @@
   });
   document.querySelector("[data-player-close]").addEventListener("click", closePlayer);
   dialog.addEventListener("click", function (e) { if (e.target === dialog) closePlayer(); });
+
+  /* ── Cintillo de patrocinadores: bucle continuo ─────── */
+  var marquee = document.querySelector("[data-marquee]");
+  if (marquee && !reduceMotion.matches) {
+    var strip = marquee.querySelector(".sponsors__track");
+    Array.prototype.slice.call(strip.children).forEach(function (li) {
+      var c = li.cloneNode(true);
+      c.setAttribute("aria-hidden", "true");
+      c.querySelector("img").alt = "";
+      strip.appendChild(c);
+    });
+    // Velocidad constante (~40 px/s) sin importar el número de logos
+    marquee.style.setProperty("--marquee-dur", Math.round(strip.scrollWidth / 2 / 40) + "s");
+    marquee.classList.add("is-running");
+    // Solo se anima cuando está a la vista
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (en) {
+        strip.style.animationPlayState = en[0].isIntersecting ? "" : "paused";
+      }).observe(marquee);
+    }
+  }
 
   /* ── Aparición sutil al hacer scroll ────────────────── */
   var reveals = document.querySelectorAll(".reveal");

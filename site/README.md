@@ -27,14 +27,20 @@ netlify.toml (raíz del repo): publica `site/` y define caché y cabeceras.
 
 Para verlo en local: `cd site && python3 -m http.server 8787` y abre http://localhost:8787/elpacto/
 
-## PENDIENTES antes de publicar (en `assets/js/config.js`)
-- [ ] `ticketsUrl`: URL de la boletera oficial. Mientras esté vacía, los botones "Comprar boletos" llevan a #boletos.
-- [ ] Redes: Instagram / TikTok / YouTube / Spotify. Las que estén vacías no se muestran.
-- [ ] Legales: Aviso de privacidad, Términos y condiciones, Contacto. Los que estén vacíos no se muestran.
-- [ ] FAQ: hora de inicio, estacionamiento, edad mínima (marcados "por confirmar" en `elpacto/index.html`).
+## Configurado (en `assets/js/config.js`)
+- Boletera: TaquillaPlus (evt=858). Los botones "Comprar boletos" abren en otra pestaña.
+- WhatsApp: https://wa.me/522226614367 (footer, contacto y FAQ).
+- Redes: Instagram y Facebook.
+
+## PENDIENTES antes de publicar
+- [ ] Legales: Aviso de privacidad y Términos y condiciones. Los que estén vacíos no se muestran.
 - [ ] Medición: pegar el snippet de GA4 o GTM en el `<head>`. Los eventos ya se envían a `dataLayer`/`gtag`:
-  - `/elpacto`: `ticket_click` (con `location`), `video_play`, `maps_click`
+  - `/elpacto`: `ticket_click` (con `location`), `video_play`, `maps_click`, `whatsapp_click`
   - HOME: `event_landing_click`
+
+## Patrocinadores
+Logos en `assets/img/sponsors/` y lista en la sección "Patrocinadores y puntos de venta" de `elpacto/index.html`.
+Para agregar uno: copia un `<li>` y ajusta `width`/`height` para que su peso visual sea parecido al de los demás.
 
 ## Videos
 | Archivo | Origen | Uso |

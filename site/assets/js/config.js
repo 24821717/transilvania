@@ -10,8 +10,11 @@
  * Antes de publicar, todos deben tener destinos reales y verificados.
  */
 window.TRANSILVANIA_CONFIG = {
-  // Boletera oficial (PENDIENTE)
-  ticketsUrl: "",
+  // Boletera oficial (TaquillaPlus)
+  ticketsUrl: "https://eventos.taquillaplus.com.mx/eventperformances.asp?evt=858",
+
+  // WhatsApp de atención
+  whatsappUrl: "https://wa.me/522226614367",
 
   // Cómo llegar a la sede
   mapsUrl:
@@ -21,6 +24,7 @@ window.TRANSILVANIA_CONFIG = {
   social: {
     instagram: "https://www.instagram.com/transilvania.halloweenfest/",
     facebook: "https://www.facebook.com/Transilvania.Halloween",
+    whatsapp: "https://wa.me/522226614367",
     tiktok: "",
     youtube: "",
     spotify: "",
@@ -30,7 +34,7 @@ window.TRANSILVANIA_CONFIG = {
   legal: {
     privacy: "",
     terms: "",
-    contact: "", // p. ej. "mailto:hola@transilvaniahalloween.com" o una URL
+    contact: "https://wa.me/522226614367", // p. ej. "mailto:hola@transilvaniahalloween.com" o una URL
   },
 };
 
