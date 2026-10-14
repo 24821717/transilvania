@@ -12,3 +12,4 @@ node_modules/
 
 # Notas internas (contienen datos sensibles)
 recomendaciones/
+bloc*.txt
